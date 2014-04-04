@@ -2,27 +2,22 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>VENVEE官方网站</title>	
-		<link rel="stylesheet" href="css/base.css">
-		<link rel="stylesheet" href="css/common.css">
-		<link rel="stylesheet" href="css/page.css">
-
-		
-		<!--[if lt IE8]>
+		<title>VENVEE官方网站</title>
+		<!--[if lte IE8]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/page.css">		
 	</head>
-	<body>
-		
-		
-		
-		
-		<!-- 视差切换DIV 开始 -->
+	<body>	
+		<!--  -->
 
-		<!-- 视差切换DIV 结束 -->
+		<!--  -->
         <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/base.js"></script>
         <script src="js/common.js"></script>
-        <script src="js/common.js"></script>
+        <script src="js/page.js"></script>
 		<script type="text/javascript">	
 			//初始化 统一入口
 			function init(){
@@ -30,5 +25,19 @@
 			}
 			init();
 		</script>
+		
+		<!-- css3兼容低版本 -->
+		<!--[if lt IE 9]>
+        <script type="text/javascript" src="js/PIE/PIE.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                if (window.PIE) {
+                    $('.rounded').each(function() {
+                        PIE.attach(this);
+                    });    
+                }
+            });
+        </script>
+        <![endif]-->
 	</body>
 </html>

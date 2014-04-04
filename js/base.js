@@ -1,64 +1,40 @@
 // JavaScript Document
 
-//简化信息显示隐藏
-function simplifyInfo(sTop) {
-    $(window).scroll(function () {
-        if ($(window).scrollTop() > sTop) {
-            $("#simplifyInfo").slideDown(200);
-            $("#simplifyInfo").addClass("showSimplifyInfo");
-        } else {
-            $("#simplifyInfo").hide().removeClass("showSimplifyInfo");
-        }
-    });
-}
-
-//导航小于896px隐藏
-function navLt896(){
-    var width=document.documentElement.offsetWidth;
-    width <= 869 ? $("#nav").hide(500) : $("#nav").show(500);
-}
-
-//导航显示隐藏
-function rightsidebar(){
-    //载入隐藏 初始化
-    navLt896();
-    //检测浏览器大小变化
-    window.onresize=function(){
-        navLt896();
-        // (document.documentElement.clientWidth < document.body.clientWidth) ? navLt896():navLt896();
-    }
-    //浮动导航隐藏显示
-    $("#nav").hover(   
-        function () {         
-            $(this).delay(0).animate({"margin-right":0},600);
-            // $(this).animate({"margin-right":0},600);
-            // $(this).stop();
-            // $(this).stop().delay(0).animate({"margin-right":0},600);
-        },
-        function () {           
-            $(this).delay(1000).animate({"margin-right":-70},600);
-            // $(this).animate({"margin-right":-70},600);
-            // $(this).stop();
-           // $(this).stop().delay(1000).animate({"margin-right":-70},600); 
-        }
-    )
-}
-
-//导航跳转
-function navLink(liID){
-    var link="index.html#"+liID
-    window.location.href=link;
-    var x=liID=="meReward"||liID=="meEvaluate"||liID=="meRelation"||liID=="download";
-    if(!x){
-        var sTop = document.documentElement.scrollTop||document.body.scrollTop;
-            sTop=sTop-30;
-            $("body,html").scrollTop(sTop);
-    }else{
-        return;
+/**
+* @name		:
+* @author	:si
+* @dependent:全局变量的命名函数
+*  GLOBAL.namespace("A.BOOK");GLOBAL.A.BOOK.name="b";
+*/
+var GLOBAL={};
+GLOBAL.namespace=function(str){
+    var arr=str.split("."),o=GLOBAL;
+    for(i=(arr[0]=="GLOBAL")?1:0;i<ar.length;i++){
+        o[arr[i]]=o[arr[i]]||{};
+        o=o[arr[i]];
     }
 }
+/* @end **/
 
-//返回顶部
+/**
+* @name		:get_previousSibling
+* @author	:si
+* @dependent:去空白字符
+*/
+function get_previousSibling(n) {
+    var y = n.previousSibling;
+    while (y.nodeType != 1) {
+        y = y.previousSibling;
+    }
+    return y;
+}
+/* @end **/
+
+/**
+* @name		:toTop
+* @author	:si
+* @dependent:返回顶部
+*/
 function toTop(){   
     //首先将#back-to-top隐藏 
     $("#back-to-top").hide();
@@ -83,3 +59,152 @@ function toTop(){
     });
     
 };
+/* @end **/
+
+/**
+* @author	:si
+* @dependent:Google 分析代码;
+*/
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+    m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-46800861-1', 'liurisi.net');
+ga('send', 'pageview');
+/* @end **/
+
+/**
+* @name		:BOMIEVersions
+* @author	:si
+* @dependent:浏览器IE版本判断
+*/
+function BOMIEVersions() {
+    var v = 3,
+        div = document.createElement('div'),
+        all = div.getElementsByTagName('i');
+    while (
+        div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
+        all[0]
+    );
+    return v > 4 ? v : false;
+}
+/* @end **/
+
+/**
+* @name		:getDate
+* @author	:si
+* @dependent:获取日期
+*/
+function getDate() {
+    var Digital = new Date();
+
+    if (document.all) {
+        var year = Digital.getYear();
+    } else {
+        var year = Digital.getYear() + 1900;
+    }
+    var month = Digital.getMonth() + 1;
+    var date = Digital.getDate();
+    console.log(year, month, date);
+    // return year,month,date
+
+    // var hours=Digital.getHours();
+    // var minutes=Digital.getMinutes();
+    // var seconds=Digital.getSeconds();
+
+    // if (minutes<=9){minutes="0"+minutes;}
+    // if (seconds<=9){seconds="0"+seconds;}  
+    // if (hours<=9){hours="0"+hours;}
+
+    // var time=year+"年"+month+"月"+date+"日";
+    // var name1=document.getElementById("date_time").value=time;
+    // var ctime=hours+":"+minutes+":"+seconds;
+    // var name1=document.getElementById("date_ctime").value=ctime;
+    // setTimeout("showDate()",1000);
+}
+
+/* @end **/
+
+/**
+* @name		:btnBindEnter
+* @author	:si
+* @dependent:按钮回车键
+*  btnID为元素ID,scopeID为作用域ID,作用域可为空 默认window
+*/
+function btnBindEnter(btnID,scopeID) {
+    var button = document.getElementById(btnID);
+    var scope = document.getElementById(scopeID);
+    var temporary;
+
+    function bindEnter(event){      
+        if(event.keyCode == 13){
+            console.log("ENTER");
+            button.click();
+            event.returnValue = false;
+        }
+    }
+
+    temporary=scope?scope:window;
+    temporary.onkeydown=function bindEnter(event){
+        if(event.keyCode == 13){
+            console.log("ENTER");
+            button.click();
+            event.returnValue = false;
+        }
+    };
+}
+/* @end **/
+
+/**
+* @name		:searchDefault
+* @author	:si
+* @dependent:搜索框默认值
+*/
+function searchDefault(sID){
+    var searchID=document.getElementById(sID);
+    //获得焦点
+    searchID.onfocus=function(){
+        if (searchID.value=="SEARCH") {
+            searchID.value="";
+        }      
+    };
+    //失去焦点
+    searchID.onblur=function(){
+        if (searchID.value=="") {
+            searchID.value="SEARCH";
+        }
+    }; 
+}
+/* @end **/
+
+
+/**
+* @name		:consoleDebug
+* @author	:si
+* @dependent:调试函数
+*/
+function consoleDebug(x) {
+    console.log(x);
+}
+/* @end **/
+
+
+/**
+* @name		:
+* @author	:si
+* @version	:
+* @type		:基类
+* @explain	:
+* @relating	:
+* @dependent:
+*/
+
+/* @end **/
