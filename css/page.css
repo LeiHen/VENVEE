@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+/*视差切换*/
+.section{
+	text-align:center;
+}
+.section img{
+/*    width: 100%;*/
+    max-width: 100%;
+	border: none;
+}
