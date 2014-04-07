@@ -3,25 +3,91 @@
 	<head>
 		<meta charset="utf-8">
 		<title>VENVEE官方网站</title>
-		<!--[if lte IE8]>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/page.css" />
+		<link rel="stylesheet" href="css/font.css" />
+        <!--[if lte IE8]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-		<link rel="stylesheet" href="css/base.css">
-		<link rel="stylesheet" href="css/common.css">
-		<link rel="stylesheet" href="css/page.css">		
 	</head>
 	<body>	
 		<!--  -->
+        <div id="indexLoading" class="loading"><img src="images/loading.gif" alt="loading"></div>
+        <div id="index-bg" class="index_bg"><img src="images/bg1.jpg" alt=""></div>
+        
+        <div class="index_main">
+            <!-- 头部开始 -->
+            <header>
 
-		<!--  -->
+                <a class="logo block" href="index.html" >
+                    <img src="images/logo.png" alt="VENVEE LOGO" title="VENVEE LOGO" />
+                </a>
+                <img class="indeex_title"  src="images/index_title.png">
+                
+                <!-- 导航开始 -->
+                <nav>
+                    <a href="#">ABOUT</a>
+                    <a href="#">STORE</a>
+                    <a href="#">COLLECTION</a>
+                    <a href="#">JOIN US</a>
+                    <a href="#">NEWS</a>
+                    <ul class="sub_nav">
+                        <li><a href="">desiners</a></li>
+                        <li><a href="">MAGAZINE</a></li>
+                        <li><a href="">VIP</a></li>
+                        <li><a href="">CONTACT</a></li>
+                        <li><a href="">DCOLLEGE</a></li>
+                    </ul>
+                </nav>
+                <!-- 导航结束 -->
+            </header>
+            <!-- 头部结束 -->
+            
+            <!-- 内容结束 -->
+            <div class="content">
+                <div class="content_detailedness">
+                    <h1>Characteristic <img src="images/list-bot.png" alt=""></h1>
+                    <p>Venvee clear brand positioning, urban fashion trends,25-45-year-old urban women. Emphasis on fine tailoring, contour shape, artistic Xiangtie, both young women's romantic design, and both women's intellectual and elegant. Fabric quality, both radian styling, and comfortable next to the skin, sophisticated technology and perfect stitching lines, classic fashion accessories, fashion trends, people walk freely.</p>                    
+                </div>
+                
+                <!-- 分享开始 -->
+                <div class="share">
+                    <a class="icon-facebook" href="#"></a>
+                    <a class="icon-twitter" href="#"></a>
+                    <a class="icon-googleplus" href="#"></a>
+                    <a class="icon-instagram" href="#"></a>
+                    <a class="reset_r_m icon-youtube" href="#"></a>
+                </div>
+                <!-- 分享结束 -->
+                
+            </div>
+            <!-- 内容结束 -->
+
+            <!-- 版权开始 -->
+            <footer>
+                <p class="clock_white">广州樊羽服装有限公司</p>
+                <p class="clock_grey">Guangzhou where the words Garment Co. Ltd.</p>
+                <address>免费财富热线：<img src="images/phone.png" alt="400 628 3888"></address>
+            </footer>
+            <!-- 版权结束 -->
+        </div>
+
+        
+
         <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
-        <script src="js/base.js"></script>
-        <script src="js/common.js"></script>
-        <script src="js/page.js"></script>
-		<script type="text/javascript">	
+        <script  src="js/base.js"></script>
+        <script  src="js/common.js"></script>
+        <script  src="js/page.js"></script>
+		<script type="text/javascript">
 			//初始化 统一入口
 			function init(){
-
+                //载入动画
+                (function(){
+                    document.getElementsByTagName("body")[0].onload=loading('indexLoading');
+                })();
+                
+//                imgBgSwitch();
 			}
 			init();
 		</script>
@@ -39,5 +105,11 @@
             });
         </script>
         <![endif]-->
+        
+        <!-- IE7字体hack -->
+        <!--[if lte IE 7]>
+            <script src="js/font.ie7.js"></script>
+        <![endif]-->
+        
 	</body>
 </html>

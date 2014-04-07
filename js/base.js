@@ -10,25 +10,65 @@ var GLOBAL={};
 GLOBAL.namespace=function(str){
     var arr=str.split("."),o=GLOBAL;
     for(i=(arr[0]=="GLOBAL")?1:0;i<ar.length;i++){
-        o[arr[i]]=o[arr[i]]||{};
-        o=o[arr[i]];
+        o[arr[i]] = o[arr[i]] || {};
+        o = o[arr[i]];
     }
+}
+/* @end **/
+
+/**
+* @name		:loading
+* @author	:si
+* @dependent:载入loading 效果
+*/
+function loading(ID){
+    var loadID=document.getElementById(ID);
+    var i=1;
+    loadID.style.opacity=1; 
+    function defer(){
+        loadID.nextSibling
+        loadID.style.opacity=loadID.style.opacity-0.05;
+        var opa=loadID.style.opacity;
+        if(opa>=0.1){
+            setTimeout(defer,20);
+//            consoleDebug("还没结束么");
+        }else{
+//            consoleDebug(opa);
+            loadID.style.display="none";
+        }
+    }
+    defer();
 }
 /* @end **/
 
 /**
 * @name		:get_previousSibling
 * @author	:si
-* @dependent:去空白字符
+* @dependent:获得当前节点的上一个兄弟（除空节点）
 */
-function get_previousSibling(n) {
-    var y = n.previousSibling;
-    while (y.nodeType != 1) {
-        y = y.previousSibling;
+function get_previousSibling(node) {
+    var x=node.previousSibling;
+    while (x.nodeType!=1){
+        x=x.previousSibling;
+    }
+    return x;
+}
+/* @end **/
+
+/**
+* @name		:get_nextSibling
+* @author	:si
+* @dependent:获得当前节点的下一个兄弟（除空节点）
+*/
+function get_nextSibling(node){
+    var y=node.nextSibling;
+    while (y.nodeType!=1){
+        y=y.nextSibling;
     }
     return y;
 }
 /* @end **/
+
 
 /**
 * @name		:toTop
@@ -65,20 +105,20 @@ function toTop(){
 * @author	:si
 * @dependent:Google 分析代码;
 */
-(function(i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function() {
-        (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-    m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-ga('create', 'UA-46800861-1', 'liurisi.net');
-ga('send', 'pageview');
+//(function(i, s, o, g, r, a, m) {
+//    i['GoogleAnalyticsObject'] = r;
+//    i[r] = i[r] || function() {
+//        (i[r].q = i[r].q || []).push(arguments)
+//    }, i[r].l = 1 * new Date();
+//    a = s.createElement(o),
+//    m = s.getElementsByTagName(o)[0];
+//    a.async = 1;
+//    a.src = g;
+//    m.parentNode.insertBefore(a, m)
+//})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+//
+//ga('create', 'UA-46800861-1', 'liurisi.net');
+//ga('send', 'pageview');
 /* @end **/
 
 /**

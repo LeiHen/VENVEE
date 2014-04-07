@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+/*引用自定义字体*/
+@font-face {
+	font-family: 'socialContact';
+	src:url('../fonts/socialContact/socialContact.eot?-ttjez0');
+	src:
+		url('../fonts/socialContact/socialContact.svg?-ttjez0#socialContact') format('svg'),
+		url('../fonts/socialContact/socialContact.eot?#iefix-ttjez0') format('embedded-opentype'),
+		url('../fonts/socialContact/socialContact.woff?-ttjez0') format('woff'),
+		url('../fonts/socialContact/socialContact.ttf?-ttjez0') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'socialContact';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-googleplus:before {
+	content: "\e603";
+}
+.icon-facebook:before {
+	content: "\e601";
+}
+.icon-twitter:before {
+	content: "\e602";
+}
+.icon-youtube:before {
+	content: "\e605";
+}
+.icon-instagram:before {
+	content: "\e604";
+}
