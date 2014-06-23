@@ -1,15 +1,16 @@
 // JavaScript Document
 
 /**
-* @name		:
-* @author	:si
-* @dependent:全局变量的命名函数
-*  GLOBAL.namespace("A.BOOK");GLOBAL.A.BOOK.name="b";
-*/
-var GLOBAL={};
-GLOBAL.namespace=function(str){
-    var arr=str.split("."),o=GLOBAL;
-    for(i=(arr[0]=="GLOBAL")?1:0;i<ar.length;i++){
+ * @name		:
+ * @author	:si
+ * @dependent:全局变量的命名函数
+ *  GLOBAL.namespace("A.BOOK");GLOBAL.A.BOOK.name="b";
+ */
+var GLOBAL = {};
+GLOBAL.namespace = function (str) {
+    var arr = str.split("."),
+        o = GLOBAL;
+    for (i = (arr[0] == "GLOBAL") ? 1 : 0; i < ar.length; i++) {
         o[arr[i]] = o[arr[i]] || {};
         o = o[arr[i]];
     }
@@ -17,24 +18,25 @@ GLOBAL.namespace=function(str){
 /* @end **/
 
 /**
-* @name		:loading
-* @author	:si
-* @dependent:载入loading 效果
-*/
-function loading(ID){
-    var loadID=document.getElementById(ID);
-    var i=1;
-    loadID.style.opacity=1; 
-    function defer(){
+ * @name		:loading
+ * @author	:si
+ * @dependent:载入loading 效果
+ */
+function loading(ID) {
+    var loadID = document.getElementById(ID);
+    var i = 1;
+    loadID.style.opacity = 1;
+
+    function defer() {
         loadID.nextSibling
-        loadID.style.opacity=loadID.style.opacity-0.05;
-        var opa=loadID.style.opacity;
-        if(opa>=0.1){
-            setTimeout(defer,20);
-//            consoleDebug("还没结束么");
-        }else{
-//            consoleDebug(opa);
-            loadID.style.display="none";
+        loadID.style.opacity = loadID.style.opacity - 0.05;
+        var opa = loadID.style.opacity;
+        if (opa >= 0.1) {
+            setTimeout(defer, 20);
+            //            consoleDebug("还没结束么");
+        } else {
+            //            consoleDebug(opa);
+            loadID.style.display = "none";
         }
     }
     defer();
@@ -42,28 +44,28 @@ function loading(ID){
 /* @end **/
 
 /**
-* @name		:get_previousSibling
-* @author	:si
-* @dependent:获得当前节点的上一个兄弟（除空节点）
-*/
+ * @name		:get_previousSibling
+ * @author	:si
+ * @dependent:获得当前节点的上一个兄弟（除空节点）
+ */
 function get_previousSibling(node) {
-    var x=node.previousSibling;
-    while (x.nodeType!=1){
-        x=x.previousSibling;
+    var x = node.previousSibling;
+    while (x.nodeType != 1) {
+        x = x.previousSibling;
     }
     return x;
 }
 /* @end **/
 
 /**
-* @name		:get_nextSibling
-* @author	:si
-* @dependent:获得当前节点的下一个兄弟（除空节点）
-*/
-function get_nextSibling(node){
-    var y=node.nextSibling;
-    while (y.nodeType!=1){
-        y=y.nextSibling;
+ * @name		:get_nextSibling
+ * @author	:si
+ * @dependent:获得当前节点的下一个兄弟（除空节点）
+ */
+function get_nextSibling(node) {
+    var y = node.nextSibling;
+    while (y.nodeType != 1) {
+        y = y.nextSibling;
     }
     return y;
 }
@@ -71,25 +73,29 @@ function get_nextSibling(node){
 
 
 /**
-* @name		:toTop
-* @author	:si
-* @dependent:返回顶部
-*/
-function toTop(){   
+ * @name		:toTop
+ * @author	:si
+ * @dependent:返回顶部
+ */
+function toTop() {
     //首先将#back-to-top隐藏 
     $("#back-to-top").hide();
-    
+
     //当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
     $(window).scroll(function () {
         if ($(window).scrollTop() > 100) {
             $("#back-to-top").fadeIn(600);
-            $("#goReturn").stop().animate({bottom:80},800);     
-        } else {         
+            $("#goReturn").stop().animate({
+                bottom: 80
+            }, 800);
+        } else {
             $("#back-to-top").fadeOut(600);
-            $("#goReturn").stop().animate({bottom:25},800);
+            $("#goReturn").stop().animate({
+                bottom: 25
+            }, 800);
         }
     });
-   
+
     //当点击跳转链接后，回到页面顶部位置
     $("#back-to-top").click(function () {
         $("body,html").animate({
@@ -97,35 +103,15 @@ function toTop(){
         }, 400);
         return false;
     });
-    
+
 };
 /* @end **/
 
 /**
-* @author	:si
-* @dependent:Google 分析代码;
-*/
-//(function(i, s, o, g, r, a, m) {
-//    i['GoogleAnalyticsObject'] = r;
-//    i[r] = i[r] || function() {
-//        (i[r].q = i[r].q || []).push(arguments)
-//    }, i[r].l = 1 * new Date();
-//    a = s.createElement(o),
-//    m = s.getElementsByTagName(o)[0];
-//    a.async = 1;
-//    a.src = g;
-//    m.parentNode.insertBefore(a, m)
-//})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-//
-//ga('create', 'UA-46800861-1', 'liurisi.net');
-//ga('send', 'pageview');
-/* @end **/
-
-/**
-* @name		:BOMIEVersions
-* @author	:si
-* @dependent:浏览器IE版本判断
-*/
+ * @name		:BOMIEVersions
+ * @author	:si
+ * @dependent:浏览器IE版本判断
+ */
 function BOMIEVersions() {
     var v = 3,
         div = document.createElement('div'),
@@ -139,10 +125,10 @@ function BOMIEVersions() {
 /* @end **/
 
 /**
-* @name		:getDate
-* @author	:si
-* @dependent:获取日期
-*/
+ * @name		:getDate
+ * @author	:si
+ * @dependent:获取日期
+ */
 function getDate() {
     var Digital = new Date();
 
@@ -174,27 +160,27 @@ function getDate() {
 /* @end **/
 
 /**
-* @name		:btnBindEnter
-* @author	:si
-* @dependent:按钮回车键
-*  btnID为元素ID,scopeID为作用域ID,作用域可为空 默认window
-*/
-function btnBindEnter(btnID,scopeID) {
+ * @name		:btnBindEnter
+ * @author	:si
+ * @dependent:按钮回车键
+ *  btnID为元素ID,scopeID为作用域ID,作用域可为空 默认window
+ */
+function btnBindEnter(btnID, scopeID) {
     var button = document.getElementById(btnID);
     var scope = document.getElementById(scopeID);
     var temporary;
 
-    function bindEnter(event){      
-        if(event.keyCode == 13){
+    function bindEnter(event) {
+        if (event.keyCode == 13) {
             console.log("ENTER");
             button.click();
             event.returnValue = false;
         }
     }
 
-    temporary=scope?scope:window;
-    temporary.onkeydown=function bindEnter(event){
-        if(event.keyCode == 13){
+    temporary = scope ? scope : window;
+    temporary.onkeydown = function bindEnter(event) {
+        if (event.keyCode == 13) {
             console.log("ENTER");
             button.click();
             event.returnValue = false;
@@ -204,47 +190,47 @@ function btnBindEnter(btnID,scopeID) {
 /* @end **/
 
 /**
-* @name		:searchDefault
-* @author	:si
-* @dependent:搜索框默认值
-*/
-function searchDefault(sID){
-    var searchID=document.getElementById(sID);
+ * @name		:searchDefault
+ * @author	:si
+ * @dependent:搜索框默认值
+ */
+function searchDefault(sID) {
+    var searchID = document.getElementById(sID);
     //获得焦点
-    searchID.onfocus=function(){
-        if (searchID.value=="SEARCH") {
-            searchID.value="";
-        }      
+    searchID.onfocus = function () {
+        if (searchID.value == "SEARCH") {
+            searchID.value = "";
+        }
     };
     //失去焦点
-    searchID.onblur=function(){
-        if (searchID.value=="") {
-            searchID.value="SEARCH";
+    searchID.onblur = function () {
+        if (searchID.value == "") {
+            searchID.value = "SEARCH";
         }
-    }; 
+    };
 }
 /* @end **/
 
 
 /**
-* @name		:consoleDebug
-* @author	:si
-* @dependent:调试函数
-*/
-function consoleDebug(x) {
-    console.log(x);
+ * @name		:consoleDebug
+ * @author	:si
+ * @dependent:调试函数
+ */
+function consoleDebug(info) {
+    console.log(info);
 }
 /* @end **/
 
 
 /**
-* @name		:
-* @author	:si
-* @version	:
-* @type		:基类
-* @explain	:
-* @relating	:
-* @dependent:
-*/
+ * @name		:
+ * @author	:si
+ * @version	:
+ * @type		:基类
+ * @explain	:
+ * @relating	:
+ * @dependent:
+ */
 
 /* @end **/

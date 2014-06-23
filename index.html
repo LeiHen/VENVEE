@@ -8,10 +8,14 @@
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/page.css" />
     <link rel="stylesheet" href="css/font.css" />
-    <!--[if lte IE8]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <!--[if lte IE 8]>  
+        <script src="js/html5shiv.js"></script>
     <![endif]-->
+    <!-- <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> -->
+
+
 </head>
+
 
 <body>
 
@@ -25,7 +29,7 @@
 
     <div class="index_main">
         <!-- 头部开始 -->
-        <header>
+        <header class="pr">
 
             <a class="logo block" href="index.html">
                 <img src="images/logo.png" alt="VENVEE LOGO" title="VENVEE LOGO" />
@@ -62,7 +66,7 @@
         <!-- 头部结束 -->
 
         <!-- 内容结束 -->
-        <div class="content">
+        <div class="content pr">
             <div class="content_detailedness">
                 <h1>Characteristic
                     <img src="images/list-bot.png" alt="">
@@ -84,7 +88,7 @@
         <!-- 内容结束 -->
 
         <!-- 版权开始 -->
-        <footer>
+        <footer class="pr">
             <p class="clock_white">广州樊羽服装有限公司</p>
             <p class="clock_grey">Guangzhou where the words Garment Co. Ltd.</p>
             <address>免费财富热线：
@@ -96,7 +100,9 @@
 
     <div class="clear"></div>
 
-    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+
+    <!--    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>-->
+    <script src="js/jquery.1.10.2.min.js"></script>
     <script src="js/base.js"></script>
     <script src="js/common.js"></script>
     <script src="js/page.js"></script>
@@ -125,12 +131,12 @@
                 }
             });
         </script>
-        <![endif]-->
+    <![endif]-->
 
     <!-- IE7字体hack -->
     <!--[if lte IE 7]>
-            <script src="js/font.ie7.js"></script>
-        <![endif]-->
+        <script src="js/font.ie7.js"></script>
+    <![endif]-->
 
 </body>
 
